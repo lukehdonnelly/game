@@ -1,21 +1,17 @@
 [gd_scene load_steps=8 format=3 uid="uid://ti65ueidf6w"]
 
-[ext_resource type="Texture2D" uid="uid://dmpnnihxadq2m" path="res://sprites/knight.png" id="1_g51rr"]
+[ext_resource type="PackedScene" uid="uid://ccq3ywyjowmcx" path="res://scenes/snowdude.tscn" id="1_e4nuf"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_bw0rw"]
-atlas = ExtResource("1_g51rr")
 region = Rect2(0, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_hnteq"]
-atlas = ExtResource("1_g51rr")
 region = Rect2(32, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_52ffk"]
-atlas = ExtResource("1_g51rr")
 region = Rect2(64, 0, 32, 32)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_s7647"]
-atlas = ExtResource("1_g51rr")
 region = Rect2(96, 0, 32, 32)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_gahtq"]
@@ -42,6 +38,8 @@ animations = [{
 radius = 5.0
 
 [node name="game" type="Node2D"]
+
+[node name="snowdude" parent="." instance=ExtResource("1_e4nuf")]
 
 [node name="player" type="CharacterBody2D" parent="."]
 
