@@ -8,7 +8,7 @@ func _ready():
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	pass
+	pass 
 
 
 func _on_area_2d_body_entered(body):
@@ -16,7 +16,4 @@ func _on_area_2d_body_entered(body):
 	var label = Label.new()
 	label.text = "Press E to interact"
 	label.set_position(self.position)
-	var font = FontFile.new()
-	font.size = 24
-	label.add_font_override("font", font)
 	add_child(label)
