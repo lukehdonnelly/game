@@ -2,9 +2,9 @@
 
 [ext_resource type="Texture2D" uid="uid://sq5j1ycg5tir" path="res://sprites/OIG4.jpg" id="1_w8gd7"]
 [ext_resource type="PackedScene" uid="uid://ccq3ywyjowmcx" path="res://scenes/snowdude.tscn" id="2_2vojx"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="3_t5xv2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_t5xv2"]
 [ext_resource type="Texture2D" uid="uid://vnbmpn614jp8" path="res://sprites/pirate-Sheet.png" id="4_agxly"]
-[ext_resource type="Script" path="res://scenes/pirateCollision.gd" id="5_qj3lu"]
+[ext_resource type="Script" path="res://scripts/pirateCollision.gd" id="5_qj3lu"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nqcn"]
 size = Vector2(1248, 444)

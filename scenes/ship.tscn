@@ -1,0 +1,18 @@
+[gd_scene load_steps=4 format=3 uid="uid://gg2gunlac4yb"]
+
+[ext_resource type="Texture2D" uid="uid://ca164tvpk1s5t" path="res://sprites/ocean-Basic.png" id="1_1dgcg"]
+[ext_resource type="Texture2D" uid="uid://djucwoft442ip" path="res://sprites/ship-Basic.png" id="1_bv3gg"]
+[ext_resource type="Script" path="res://scripts/Ship-basic.gd" id="3_har8i"]
+
+[node name="Ship" type="Node2D"]
+
+[node name="Ocean-basic" type="Sprite2D" parent="."]
+position = Vector2(9, 136)
+texture = ExtResource("1_1dgcg")
+
+[node name="Ship-basic" type="Sprite2D" parent="."]
+position = Vector2(5.00001, 124)
+rotation = 1.5708
+scale = Vector2(0.267506, 0.267506)
+texture = ExtResource("1_bv3gg")
+script = ExtResource("3_har8i")
