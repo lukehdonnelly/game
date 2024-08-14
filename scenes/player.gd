@@ -6,7 +6,7 @@ func _physics_process(delta):
 	var input_vector = Vector2.ZERO # Making a 2 dimensional input vector
 	input_vector.x = Input.get_action_strength("right") - Input.get_action_strength("left") # Horizontal positioning
 	input_vector.y = Input.get_action_strength("down") - Input.get_action_strength("up") # Vertical
-	input_vector = input_vector.normalized() # no clue what this does
+	input_vector = input_vector.normalized() # changes so that the player doesnt move diagonally
 
   # giving the movement
 	if input_vector:
