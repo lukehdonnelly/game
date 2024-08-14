@@ -1,0 +1,122 @@
+[gd_scene load_steps=18 format=3 uid="uid://dq6el5ncv85m3"]
+
+[ext_resource type="Texture2D" uid="uid://sq5j1ycg5tir" path="res://sprites/OIG4.jpg" id="1_w8gd7"]
+[ext_resource type="PackedScene" uid="uid://ccq3ywyjowmcx" path="res://scenes/snowdude.tscn" id="2_2vojx"]
+[ext_resource type="Script" path="res://scenes/player.gd" id="3_t5xv2"]
+[ext_resource type="Texture2D" uid="uid://vnbmpn614jp8" path="res://sprites/pirate-Sheet.png" id="4_agxly"]
+[ext_resource type="Script" path="res://scenes/pirateCollision.gd" id="5_qj3lu"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2nqcn"]
+size = Vector2(1248, 444)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_2o28b"]
+radius = 2.48338
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5kufe"]
+atlas = ExtResource("4_agxly")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pqu4d"]
+atlas = ExtResource("4_agxly")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xc7yo"]
+atlas = ExtResource("4_agxly")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_0wgjx"]
+atlas = ExtResource("4_agxly")
+region = Rect2(96, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_l3i6i"]
+atlas = ExtResource("4_agxly")
+region = Rect2(128, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_b0iho"]
+atlas = ExtResource("4_agxly")
+region = Rect2(160, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_13m26"]
+atlas = ExtResource("4_agxly")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7ny48"]
+atlas = ExtResource("4_agxly")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_sywi5"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5kufe")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pqu4d")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xc7yo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0wgjx")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_l3i6i")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_b0iho")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_13m26")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7ny48")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_m2no5"]
+size = Vector2(52, 49)
+
+[node name="bar" type="Node2D"]
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(-2, 3)
+scale = Vector2(0.25, 0.25)
+texture = ExtResource("1_w8gd7")
+
+[node name="top wall" type="StaticBody2D" parent="background"]
+position = Vector2(8, -12)
+scale = Vector2(4, 4.15159)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="background/top wall"]
+position = Vector2(-12, -58.5)
+scale = Vector2(0.25, 0.25)
+shape = SubResource("RectangleShape2D_2nqcn")
+
+[node name="snowdude" parent="." instance=ExtResource("2_2vojx")]
+script = ExtResource("3_t5xv2")
+
+[node name="Camera2D" type="Camera2D" parent="snowdude"]
+zoom = Vector2(4, 4)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="snowdude"]
+position = Vector2(0, 5)
+scale = Vector2(2.01339, 3.34075)
+shape = SubResource("CircleShape2D_2o28b")
+
+[node name="pirate" type="AnimatedSprite2D" parent="."]
+position = Vector2(57, 22)
+sprite_frames = SubResource("SpriteFrames_sywi5")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="Area2D" type="Area2D" parent="pirate"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="pirate/Area2D"]
+position = Vector2(-1, -0.5)
+shape = SubResource("RectangleShape2D_m2no5")
+script = ExtResource("5_qj3lu")
+
+[connection signal="body_entered" from="pirate/Area2D" to="pirate/Area2D/CollisionShape2D" method="_on_area_2d_body_entered"]
