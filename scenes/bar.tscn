@@ -1,10 +1,11 @@
-[gd_scene load_steps=18 format=3 uid="uid://dq6el5ncv85m3"]
+[gd_scene load_steps=19 format=3 uid="uid://cj7wgks5m5va6"]
 
 [ext_resource type="Texture2D" uid="uid://sq5j1ycg5tir" path="res://sprites/OIG4.jpg" id="1_w8gd7"]
 [ext_resource type="PackedScene" uid="uid://ccq3ywyjowmcx" path="res://scenes/snowdude.tscn" id="2_2vojx"]
-[ext_resource type="Script" path="res://scenes/player.gd" id="3_t5xv2"]
+[ext_resource type="Script" path="res://scripts/player.gd" id="3_t5xv2"]
 [ext_resource type="Texture2D" uid="uid://vnbmpn614jp8" path="res://sprites/pirate-Sheet.png" id="4_agxly"]
-[ext_resource type="Script" path="res://scenes/pirateCollision.gd" id="5_qj3lu"]
+[ext_resource type="Script" path="res://scripts/interact popup.gd" id="4_cfsc5"]
+[ext_resource type="FontFile" uid="uid://bdflxsp8oyf6s" path="res://fonts/PixelOperator8-Bold.ttf" id="4_ye610"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2nqcn"]
 size = Vector2(1248, 444)
@@ -101,6 +102,33 @@ script = ExtResource("3_t5xv2")
 [node name="Camera2D" type="Camera2D" parent="snowdude"]
 zoom = Vector2(4, 4)
 
+[node name="HUD" type="CanvasLayer" parent="snowdude/Camera2D"]
+script = ExtResource("4_cfsc5")
+
+[node name="Panel" type="Panel" parent="snowdude/Camera2D/HUD"]
+visibility_layer = 513
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -164.0
+offset_top = 9.0
+offset_right = 160.0
+offset_bottom = 49.0
+grow_horizontal = 2
+
+[node name="interact popup" type="Label" parent="snowdude/Camera2D/HUD/Panel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -152.0
+offset_top = 13.0
+offset_right = 156.0
+offset_bottom = 36.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("4_ye610")
+text = "PRESS (E) TO INTERACT"
+
 [node name="CollisionShape2D" type="CollisionShape2D" parent="snowdude"]
 position = Vector2(0, 5)
 scale = Vector2(2.01339, 3.34075)
@@ -117,6 +145,8 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="pirate/Area2D"]
 position = Vector2(-1, -0.5)
 shape = SubResource("RectangleShape2D_m2no5")
-script = ExtResource("5_qj3lu")
 
+[connection signal="body_entered" from="pirate/Area2D" to="snowdude/Camera2D/HUD" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="pirate/Area2D" to="snowdude/Camera2D/HUD/Panel/interact popup" method="_on_area_2d_body_entered"]
 [connection signal="body_entered" from="pirate/Area2D" to="pirate/Area2D/CollisionShape2D" method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="pirate/Area2D" to="snowdude/Camera2D/HUD" method="_on_area_2d_body_exited"]
