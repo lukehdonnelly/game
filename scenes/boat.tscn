@@ -1,0 +1,79 @@
+[gd_scene load_steps=9 format=3 uid="uid://b2kgfgu4np3tw"]
+
+[ext_resource type="Script" path="res://scripts/StarterBoat.gd" id="1_plhsa"]
+[ext_resource type="Texture2D" uid="uid://dnqxu0bli3yp0" path="res://sprites/starterBoatTemplate-Sheet.png" id="1_tad1a"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_icht2"]
+atlas = ExtResource("1_tad1a")
+region = Rect2(0, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_137hl"]
+atlas = ExtResource("1_tad1a")
+region = Rect2(64, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2gbrs"]
+atlas = ExtResource("1_tad1a")
+region = Rect2(32, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_3pq5s"]
+atlas = ExtResource("1_tad1a")
+region = Rect2(192, 0, 32, 32)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_6bxxf"]
+atlas = ExtResource("1_tad1a")
+region = Rect2(224, 0, 32, 32)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_tlfr4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_icht2")
+}],
+"loop": true,
+"name": &"East",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_137hl")
+}],
+"loop": true,
+"name": &"North",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2gbrs")
+}],
+"loop": true,
+"name": &"NorthEast",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3pq5s")
+}],
+"loop": true,
+"name": &"South",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_6bxxf")
+}],
+"loop": true,
+"name": &"SouthEast",
+"speed": 5.0
+}]
+
+[node name="Boat" type="CharacterBody2D"]
+script = ExtResource("1_plhsa")
+
+[node name="StarterBoat" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_tlfr4")
+animation = &"East"
+
+[node name="Camera2D" type="Camera2D" parent="."]
+offset = Vector2(2.08165e-12, 2.08165e-12)
+zoom = Vector2(10, 10)
+position_smoothing_enabled = true
