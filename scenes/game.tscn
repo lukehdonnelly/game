@@ -3,6 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://cj7wgks5m5va6" path="res://scenes/bar.tscn" id="1_0s6k8"]
 
 [node name="game" type="Node2D"]
+y_sort_enabled = true
 
 [node name="bar" parent="." instance=ExtResource("1_0s6k8")]
 position = Vector2(204.881, 1.23497)

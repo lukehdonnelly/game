@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://b2kgfgu4np3tw"]
+[gd_scene load_steps=9 format=3 uid="uid://by24ptdddcguq"]
 
 [ext_resource type="Script" path="res://scripts/StarterBoat.gd" id="1_plhsa"]
 [ext_resource type="Texture2D" uid="uid://dnqxu0bli3yp0" path="res://sprites/starterBoatTemplate-Sheet.png" id="1_tad1a"]
